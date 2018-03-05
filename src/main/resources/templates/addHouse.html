@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title th:text="${pageTitle}">Napi SFJ</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" th:href="@{css/main.css}" href="../static/css/main.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <ul>
+                    <li><a th:href="@{/}">Házak</a></li>
+                    <li><a th:href="@{/addHouse}">Hozzáadás</a></li>
+                    <li><a th:href="@{/updateHouse}">Frissítés</a></li>
+                    <li><a th:href="@{/deleteHouse}">Törlés</a></li>
+                    <li style="float:right"><a th:href="@{/about}">Rólunk</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+                <a class="navbar-brand" href="#">myHouse.com</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="w3-card-4">
+        <div class="w3-container w3-teal">
+            <h2>Ház hozzáadása:</h2>
+        </div>
+        <form class="w3-container" action="#" th:action="@{/addHouse}" th:object="${newStory}" method="post">
+
+            <p class="container">Itt tudsz felvenni egy új eladó házat a főoldalra.</p>
+
+            <p class="container">
+                <i class="w3 fa fa-newspaper-o"></i>
+                <label class="w3-text-teal"><b>Címe: </b></label>
+                <input class="w3-input w3-border " type="text" id="title" name="title" th:field="*{title}"/>
+            </p>
+            <p class="container">
+                <i class="w3 fa fa-building"></i>
+                <label class="w3-text-teal"><b>Város:</b></label>
+                <input class="w3-input w3-border " type="text" id="city" name="city" th:field="*{city}" />
+            </p>
+            <p class="container">
+                <i class="w3 fa fa-money"></i>
+                <label class="w3-text-teal"><b>Ára:</b></label>
+                <input class="w3-input w3-border " type="text" id="housevalue" name="housevalue" th:field="*{housevalue}"  />
+            </p>
+            <p class="container">
+                <i class="w3 fa fa-external-link"></i>
+                <label class="w3-text-teal"><b>Kép linkje:</b></label>
+                <input class="w3-input w3-border " type="text" id="pictureUrl" name="pictureUrl" th:field="*{pictureUrl}" />
+            </p>
+            <p class="container">
+                <i class="w3 fa fa-external-link"></i>
+                <label class="w3-text-teal"><b>Hirdetés linkje:</b></label>
+                <input class="w3-input w3-border " type="text" id="linkToHouse" name="linkToHouse" th:field="*{linkToHouse}" />
+            </p>
+            <p class="container">
+                <i class="w3 fa fa-address-card"></i>
+                <label class="w3-text-teal"><b>Eladó Neve:</b></label>
+                <input class="w3-input w3-border " type="text" id="sellerName" name="sellerName" th:field="*{sellerName}" />
+            </p>
+            <p class="container">
+                <i class="w3 fa fa-mobile"></i>
+                <label class="w3-text-teal"><b>Eladó telefonszáma:</b></label>
+                <input class="w3-input w3-border " type="text" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" />
+            </p>
+            <p class="container">
+                <i class="w3 fa fa-microphone"></i>
+                <label class="w3-text-teal"><b>Felhivtad már?:</b>
+                <input class="w3-check" type="checkbox" id="called" name="called" th:checked="*{called}" />
+                </label>
+            </p>
+            <p class="container">
+                <i class="w3 fa fa-pencil-square-o"></i>
+                <label class="w3-text-teal"><b>Leírás:</b></label>
+                <textarea class="w3-input w3-border" id="content" name="content" th:field="*{content}" />
+            </p>
+            <br/>
+            <p>
+                <button type="submit" class="w3-btn w3-teal"><i class="w3 fa fa-check"/>  Hozzáad</button>
+                <button type="reset" class="w3-btn w3-teal"><i class="w3 fa fa-close"/>  Vissza</button>
+            </p>
+            <br/>
+        </form>
+    </div>
+
+    <br/>
+    <footer>
+        <p><i class="w3 fa faStories fa-copyright"></i> 2018 Készítette Kiss Zoltán <a href="mailto:kiss.zoltan.pti@gmail.com">kiss.zoltan.pti@gmail.com</a>.</p>
+    </footer>
+    <br/>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
+</body>
+</html>

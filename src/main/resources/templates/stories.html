@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title th:text="${pageTitle}">Napi SFJ</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" th:href="@{css/main.css}" href="../static/css/main.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <ul>
+                    <li><a th:href="@{/}">Összes Ház</a></li>
+                    <li><a th:href="@{/addHouse}">Ház hozzáadása</a></li>
+                    <li><a th:href="@{/updateHouse}">Ház frissítése</a></li>
+                    <li><a th:href="@{/deleteHouse}">Ház Törlése</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+                <a class="navbar-brand" href="#">napiSFJ.com</a>
+                <!--<p class="navbar-text navbar-right" th:text="#{yourip}">IP címed: <a href="#" class="navbar-link">127.0.0.1</a></p>-->
+            </div>
+        </div>
+    </nav>
+
+    <article th:each="story : ${stories}" class="">
+        <div class="w3-card-4">
+            <div class="w3-container">
+                <header>
+                    <h1 th:text="${story.id} +'. '+ ${story.title}" th:classappend="${story.called} ? soldStatus : buyableStatus" class="" >Ez itt a cím</h1>
+                    <h2 th:text="'Ára: ' +${story.houseValue} + ' HuF' ">Ez itt ay ára HuF</h2>
+                    <h3 th:text="'Város: ' + ${story.city}">Ez itt ay ára</h3>
+                </header>
+
+                <section class="seller">
+                    <p th:text="'Eladó: ' + ${story.sellerName}">elado</p>
+                    <p th:utext="'Telefon: ' + ${story.phoneNumber}">tel</p>
+                </section>
+
+                <section>
+                <input type="checkbox" th:attr="checked = ${story.called}" > Felhívtuk! </input><br/>
+                <input type="checkbox" th:attr="checked = ${story.called}" > Elkelt! </input><br/>
+                <input type="checkbox" th:attr="checked = ${story.called}" > NEM KELL! </input><br/>
+                </section>
+
+                <section class="linkSection">
+                    <p>Hirdetés linkje: </p>
+                    <a th:href="${story.linkToHouse}" th:text="${story.linkToHouse}">elado</a>
+                </section>
+
+                <section>
+                <img th:src="${story.pictureUrl}"/>
+                </section>
+
+                <section class="contentText">
+                    <p>Leírás: </p>
+                    <p th:utext="${story.content}"></p>
+                </section>
+
+                <footer>
+                    <section class="blogger">
+                        <address>
+                            Beküldte: <span th:text="${story.blogger.name}">Anonymous</span>
+                            <p th:text="${#dates.format(story.posted, 'yyyy.MM.dd HH:mm')}">Posted on September 31, 2015 at 10:00 PM</p>
+                        </address>
+                    </section>
+                </footer>
+                <hr/>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <p th:text="#{footerText}">Készült az San Franciscoból Jöttem csapata megbízásából</p>
+    </footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
+</body>
+</html>

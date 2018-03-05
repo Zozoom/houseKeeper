@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title th:text="${pageTitle}">Napi SFJ</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css' />
+    <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" th:href="@{css/main.css}" href="../static/css/main.css"/>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <ul>
+                    <li><a th:href="@{/}">Házak</a></li>
+                    <li><a th:href="@{/addHouse}">Hozzáadás</a></li>
+                    <li><a th:href="@{/updateHouse}">Frissítés</a></li>
+                    <li><a th:href="@{/deleteHouse}">Törlés</a></li>
+                    <li style="float:right"><a th:href="@{/about}">Rólunk</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+                <a class="navbar-brand" href="#">myHouse.com</a>
+            </div>
+        </div>
+    </nav>
+
+    <article>
+        <header>
+            <h1 th:text="'Error: '+${status}+' '+${error}+' '+${path}">Ez itt a gond</h1>
+        </header>
+    
+ 	    <section>
+            <p th:text="${message}">Ez az üzenet.</p>
+            <p th:text="${path}">Elérési út.</p>
+            <p th:text="${status}">Státusz</p>
+            <p th:text="${timestamp}">Időpont</p>
+        </section>
+
+        <section>
+            <img src="../../resources/static/images/kep.jpg" alt="Smiley face" height="5000" width="500"/>
+        </section>
+      
+    </article>
+
+    <br/>
+    <footer>
+        <p><i class="w3 fa faStories fa-copyright"></i> 2018 Készítette Kiss Zoltán <a href="mailto:kiss.zoltan.pti@gmail.com">kiss.zoltan.pti@gmail.com</a>.</p>
+    </footer>
+    <br/>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
+</body>
+</html>

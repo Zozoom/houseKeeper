@@ -1,0 +1,187 @@
+/************************************************************/
+/************************ Classes Style *********************/
+/************************************************************/
+.navbar {
+    margin-top:15px;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border-color: #009688;
+}
+
+.navbar-brand{
+    float: right;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.buyableStatus{
+    background-color: rgba(66, 138, 69, 0.36);
+}
+
+.soldStatus{
+    background-color: rgba(170, 0, 0, 0.31);
+}
+
+.myTextSections{
+    border: 0.7px solid #009688;
+    border-radius: 4px;
+}
+
+.w3-text-teal{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.fa{
+    font-size: 1.5em !important;
+}
+
+.faStories{
+    font-size: 1.0em !important;
+}
+
+.w3-card-4{
+    width:85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.w3-card-4 {
+    box-shadow: 0 4px 10px 0 rgb(255, 255, 255), 0 4px 20px 0 rgb(0, 150, 136);
+}
+
+/************************************************************/
+/********************* Tag Classes Style ********************/
+/************************************************************/
+
+p.container {
+    margin-left: 20%;
+    padding: 5px;
+}
+
+p > button {
+    margin-left: 25%;
+}
+
+textarea.w3-input {
+    width:50%;
+    height:150px;
+}
+
+/************************************************************/
+/******************* Tag Styles ****************************/
+/************************************************************/
+
+body{
+    font-family: 'Calibri', sans-serif;
+    font-size: 18px;
+    height: auto;
+    width: auto;
+    /*background-image: linear-gradient(to bottom right, white, rgba(22, 21, 136, 0.25), white) !important;*/
+    background: url("../images/bg (2).jpg") no-repeat fixed center;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+p {
+    margin: 1px 1px 1px 1px;
+    font-size: 20px;
+}
+
+header {
+    display: block;
+    padding: 10px;
+}
+
+section {
+    display: block;
+    padding: 10px;
+}
+
+address {
+    font-size: 15px;
+}
+
+img {
+    max-width: 72%;
+    height: auto;
+    border: 2px solid #009688;
+    border-radius: 4px;
+    padding: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/**********************************************************/
+/************************ NAVBAR **************************/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    border-right:1px solid #bbb;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #009688;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+/**********************************************************/
+/************************ INPUT **************************/
+input[type=text] {
+    background-color: transparent;
+    color: white;
+    width: 50% !important;
+}
+
+input[type=checkbox] {
+    font-size: 22px !important;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
