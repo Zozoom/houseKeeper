@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Locale;
 
@@ -32,7 +34,7 @@ public class HomeController {
 				locale.getDisplayCountry()));
 		return "stories2";
 	}
-	
+
 	@RequestMapping("/story")
 	public String story(Model model) {
 		model.addAttribute("pageTitle", htmlHeaderText);
@@ -54,19 +56,44 @@ public class HomeController {
         return "stories2";
     }
 
-	@RequestMapping("/title/{title}")
-	public String searchForUser(@PathVariable(value = "title") String title, Model model) throws Exception {
-		if (title == null)
-			throw new Exception("Nincs ilyen címmel sztorink!");
-		model.addAttribute("story", storyService.getSpecificStory(title));
-		return "story";
+	@GetMapping(value ="/deleteHouse")
+	public String deleteHouse(Model model) {
+		model.addAttribute("pageTitle", htmlHeaderText);
+		return "deleteHouse";
 	}
 
-	@ExceptionHandler(Exception.class)
-	public String exceptionHandler(HttpServletRequest rA, Exception ex, Model model) {
-		model.addAttribute("errMessage", ex.getMessage());
-		return "exceptionHandler";
+	@PostMapping(value ="/deleteHouse")
+	public String deleteHouse(@ModelAttribute("storyID") Integer storyID,@ModelAttribute("storyTitle") String storyTitle){
+		storyService.deleteStoryByIdAndTitle(storyID,storyTitle);
+		return "stories2";
 	}
+
+	@GetMapping(value ="/searchHouse")
+	public String searchHouse(Model model) {
+		model.addAttribute("pageTitle", htmlHeaderText);
+		return "searchHouse";
+	}
+
+	@PostMapping(value ="/updateHouse")
+	public String updateHouse(@ModelAttribute("storyID") Integer storyID, Model model) {
+		model.addAttribute("pageTitle", htmlHeaderText);
+		model.addAttribute("story", storyService.findStoryById(storyID));
+		return "updateHouse";
+	}
+
+//	@RequestMapping("/title/{title}")
+//	public String searchForUser(@PathVariable(value = "title") String title, Model model) throws Exception {
+//		if (title == null)
+//			throw new Exception("Nincs ilyen címmel sztorink!");
+//		model.addAttribute("story", storyService.getSpecificStory(title));
+//		return "story";
+//	}
+
+//	@ExceptionHandler(Exception.class)
+//	public String exceptionHandler(HttpServletRequest rA, Exception ex, Model model) {
+//		model.addAttribute("errMessage", ex.getMessage());
+//		return "exceptionHandler";
+//	}
 
 
 

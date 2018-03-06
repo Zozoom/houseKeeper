@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 import com.elsoproject.domain.Story;
+import org.springframework.transaction.annotation.Transactional;
 
-public interface StoryRepository extends CrudRepository<Story, Long> {
+public interface StoryRepository extends CrudRepository<Story, Integer> {
 
 	//SELECT * FROM STORY
 	List<Story> findAll();
@@ -15,5 +16,15 @@ public interface StoryRepository extends CrudRepository<Story, Long> {
 	Story findFirstByOrderByPostedDesc();
 
 	Story findByTitle(String title);
-	
+
+	Story findById(Integer storyId);
+
+	@Transactional
+	Story deleteStoryById(Integer storyId);
+
+	@Transactional
+	Story deleteStoryByTitle(String storyTitle);
+
+	@Transactional
+	Story deleteStoryByIdAndTitle(Integer storyId, String storyTitle);
 }

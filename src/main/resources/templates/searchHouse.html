@@ -42,61 +42,34 @@
         </div>
     </nav>
 
-    <article class="">
-        <div class="w3-card-4">
-            <div class="w3-container w3-teal">
-                <h2 th:text="${story.id} +'. '+ ${story.title}"><b>TEXT</b></h2>
-            </div>
-            <form class="w3-container" >
-
-                <section>
-                    <h2 th:text="'Ára: ' +${story.houseValue} + ' HuF' "><b>TEXT</b></h2>
-                    <h3 th:text="'Város: ' + ${story.city}"><b>TEXT</b></h3>
-                </section>
-
-                <section>
-                    <img th:src="${story.pictureUrl}"/>
-                </section>
-
-                <section class="myTextSections">
-                    <p th:utext="'Eladó: ' + ${story.sellerName}"><b>TEXT</b></p>
-                    <p th:utext="'Telefon: ' + ${story.phoneNumber}"><b>TEXT</b></p>
-                </section>
-
-                <section>
-                    <p>Eddigi Tevékenységek: </p>
-                    <input class="w3-check" type="checkbox" th:attr="checked = ${story.called}" > Felhívtuk! </input>
-                </section>
-
-                <section class="myTextSections">
-                    <p>Hirdetés linkje: </p>
-                    <a class="w3-text-teal" th:href="${story.linkToHouse}" th:text="${story.linkToHouse}"><b>TEXT</b></a>
-                </section>
-
-                <section class="myTextSections">
-                    <p>Leírás:</p>
-                    <p th:utext="${story.content}"><b>TEXT</b></p>
-                </section>
-
-                <footer>
-                    <section>
-                        <address>
-                            Beküldte: <p th:text="${story.blogger.name}"><b>TEXT</b></p>
-                            Beküldési idő: <p th:text="${#dates.format(story.posted, 'yyyy.MM.dd HH:mm')}"><b>TEXT</b></p>
-                        </address>
-                    </section>
-                </footer>
-                <hr/>
-            </form>
+    <div class="w3-card-4">
+        <div class="w3-container w3-teal">
+            <h2>Ház keresése:</h2>
         </div>
-        <br/>
-    </article>
+
+        <form class="w3-container" th:action="@{/updateHouse}" method="post">
+
+            <p class="container">Itt tudsz megadni melyik sorszámú (ID) vagy Című házat szeretnéd frissíteni.</p>
+
+            <p class="container">
+                <i class="w3 fa fa-id-card-o"></i>
+                <label class="w3-text-teal"><b>Sorszéma (ID): </b></label>
+                <input class="w3-input w3-border " type="text" id="storyID" name="storyID"/>
+            </p>
+            <br/>
+            <p>
+                <button type="submit" class="w3-btn w3-teal"><i class="w3 fa fa-search"/>  Betölt</button>
+            </p>
+            <br/>
+        </form>
+    </div>
 
     <br/>
     <footer>
         <p><i class="w3 fa faStories fa-copyright"></i> 2018 Készítette Kiss Zoltán <a href="mailto:kiss.zoltan.pti@gmail.com">kiss.zoltan.pti@gmail.com</a>.</p>
     </footer>
     <br/>
+
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

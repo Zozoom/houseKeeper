@@ -9,10 +9,11 @@
 
     <title th:text="${pageTitle}">Napi SFJ</title>
 
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link href='https://fonts.googleapis.com/css?family=Calibri' rel='stylesheet' type='text/css' />
     <link href='https://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" th:href="@{css/main.css}" href="../static/css/main.css"/>
 
     <!--[if lt IE 9]>
@@ -28,32 +29,51 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <ul>
-                    <li><a th:href="@{/}">Összes Ház</a></li>
-                    <li><a th:href="@{/addHouse}">Ház hozzáadása</a></li>
-                    <li><a th:href="@{/updateHouse}">Ház frissítése</a></li>
-                    <li><a th:href="@{/deleteHouse}">Ház Törlése</a></li>
+                    <li><a th:href="@{/}">Házak</a></li>
+                    <li><a th:href="@{/addHouse}">Hozzáadás</a></li>
+                    <li><a th:href="@{/searchHouse}">Frissítés</a></li>
+                    <li><a th:href="@{/deleteHouse}">Törlés</a></li>
+                    <li style="float:right"><a th:href="@{/about}">Rólunk</a></li>
                 </ul>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
-                <a class="navbar-brand" href="#">napiSFJ.com</a>
-                <!--<p class="navbar-text navbar-right" th:text="#{yourip}">IP címed: <a href="#" class="navbar-link">127.0.0.1</a></p>-->
+                <a class="navbar-brand" href="#">myHouse.com</a>
             </div>
         </div>
     </nav>
 
-    <h1>Ház törlése: </h1>
-    <form action="#" th:action="@{/deleteTheHouse}" method="post">
-        <!--<p>ID (száma): <input type="number" id="id" name="id" th:value="*{id}" /></p>-->
-        <p>Címe: <input type="text" id="title" name="title" th:value="*{title}" /></p>
-        <br/>
-        <p><input type="submit" value="Töröl" /></p>
-    </form>
+    <div class="w3-card-4">
+        <div class="w3-container w3-teal">
+            <h2>Ház törlése:</h2>
+        </div>
 
-    <br/><br/>
+        <form class="w3-container" th:action="@{/deleteHouse}" method="post" onsubmit="confirm('Biztos törölni akarod?') ? alert('Sikeresen Törölve') : '@{/}';">
 
+            <p class="container">Itt tudsz megadni melyik sorszámú (ID) vagy Című házat szeretnéd törölni.</p>
+
+            <p class="container">
+                <i class="w3 fa fa-id-card-o"></i>
+                <label class="w3-text-teal"><b>Sorszéma (ID): </b></label>
+                <input class="w3-input w3-border " type="text" id="storyID" name="storyID"/>
+            </p>
+            <p class="container">
+                <i class="w3 fa fa-newspaper-o"></i>
+                <label class="w3-text-teal"><b>Címe: </b></label>
+                <input class="w3-input w3-border " type="text" id="storyTitle" name="storyTitle"/>
+            </p>
+            <br/>
+            <p>
+                <button type="submit" class="w3-btn w3-teal"><i class="w3 fa fa-trash-o"/>  Törlés</button>
+            </p>
+            <br/>
+        </form>
+    </div>
+
+    <br/>
     <footer>
-        <p th:text="#{footerText}">Készült az San Franciscoból Jöttem csapata megbízásából</p>
+        <p><i class="w3 fa faStories fa-copyright"></i> 2018 Készítette Kiss Zoltán <a href="mailto:kiss.zoltan.pti@gmail.com">kiss.zoltan.pti@gmail.com</a>.</p>
     </footer>
+    <br/>
 
 </div>
 
