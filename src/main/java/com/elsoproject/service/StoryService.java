@@ -42,14 +42,16 @@ public class StoryService {
         return storyRepo.findById(id);
     }
 
-//	public Story createStory(String title, String city, String houseValue, String pictureUrl,String linkToHouse, String sellerName, String phoneNumber, boolean called, String content){
-//		Blogger blogger = bloggerRepo.findBloggerByName("Anyonymus");
-//		Story story = new Story(title, city, houseValue, pictureUrl, linkToHouse, sellerName, phoneNumber, called, content, new Date(), blogger);
-//		storyRepo.save(story);
-//		return story;
-//	}
-
 	public Story createStoryByStory(Story st){
+		Blogger blogger = bloggerRepo.findBloggerByName("Anyonymus");
+		st.setPosted(new Date());
+		st.setBlogger(blogger);
+		System.out.println("Persistance: {" +st+'}');
+		storyRepo.save(st);
+		return st;
+	}
+
+	public Story updateStoryByStory(Story st){
 		Blogger blogger = bloggerRepo.findBloggerByName("Anyonymus");
 		st.setPosted(new Date());
 		st.setBlogger(blogger);
@@ -85,16 +87,5 @@ public class StoryService {
             );
         }
 	}
-
-
-//	@PostConstruct
-//	public void init(){
-//		Blogger blogger = new Blogger("BelsőGyula", 25);
-//		bloggerRepo.save(blogger);
-//		
-//		Story story = new Story("Belső cím","Belső tartalom", new Date(), blogger); 
-//		storyRepo.save(story);
-//	}
-//	
 
 }

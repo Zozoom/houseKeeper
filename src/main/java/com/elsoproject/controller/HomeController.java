@@ -74,28 +74,18 @@ public class HomeController {
 		return "searchHouse";
 	}
 
-	@PostMapping(value ="/updateHouse")
+	@PostMapping(value ="/searchHouse")
 	public String updateHouse(@ModelAttribute("storyID") Integer storyID, Model model) {
 		model.addAttribute("pageTitle", htmlHeaderText);
 		model.addAttribute("story", storyService.findStoryById(storyID));
 		return "updateHouse";
 	}
 
-//	@RequestMapping("/title/{title}")
-//	public String searchForUser(@PathVariable(value = "title") String title, Model model) throws Exception {
-//		if (title == null)
-//			throw new Exception("Nincs ilyen címmel sztorink!");
-//		model.addAttribute("story", storyService.getSpecificStory(title));
-//		return "story";
-//	}
-
-//	@ExceptionHandler(Exception.class)
-//	public String exceptionHandler(HttpServletRequest rA, Exception ex, Model model) {
-//		model.addAttribute("errMessage", ex.getMessage());
-//		return "exceptionHandler";
-//	}
-
-
-
+	@PostMapping(value ="/updateHouse")
+	public String updateHouse(@ModelAttribute("updateStory") Story updateStory) {
+		System.out.println("Save{" +updateStory+'}');
+		storyService.updateStoryByStory(updateStory);
+		return "stories2";
+	}
 
 }

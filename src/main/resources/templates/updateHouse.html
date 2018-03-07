@@ -47,51 +47,72 @@
             <div class="w3-container w3-teal">
                 <h2 th:text="${story.id} +'. '+ ${story.title}"><b>TEXT</b></h2>
             </div>
-            <form class="w3-container" >
 
-                <section>
-                    <h2 th:text="'Ára: ' +${story.houseValue} + ' HuF' "><b>TEXT</b></h2>
-                    <h3 th:text="'Város: ' + ${story.city}"><b>TEXT</b></h3>
-                </section>
+            <form class="w3-container" action="#" th:action="@{/updateHouse}" th:object="${updateStory}" method="post">
+                <p class="container">Itt frissíthed a betöltött Ház adatait.</p>
 
-                <section>
-                    <img th:src="${story.pictureUrl}"/>
-                </section>
+                <p class="container">
+                    <input class="w3-input w3-border " type="hidden" id="id" name="id" th:value="${story.id}" />
+                </p>
 
-                <section class="myTextSections">
-                    <p th:utext="'Eladó: ' + ${story.sellerName}"><b>TEXT</b></p>
-                    <p th:utext="'Telefon: ' + ${story.phoneNumber}"><b>TEXT</b></p>
-                </section>
-
-                <section>
-                    <p>Eddigi Tevékenységek: </p>
-                    <input class="w3-check" type="checkbox" th:attr="checked = ${story.called}" > Felhívtuk! </input>
-                </section>
-
-                <section class="myTextSections">
-                    <p>Hirdetés linkje: </p>
-                    <a class="w3-text-teal" th:href="${story.linkToHouse}" th:text="${story.linkToHouse}"><b>TEXT</b></a>
-                </section>
-
-                <section class="myTextSections">
-                    <p>Leírás:</p>
-                    <p th:utext="${story.content}"><b>TEXT</b></p>
-                </section>
-
-                <footer>
-                    <section>
-                        <address>
-                            Beküldte: <p th:text="${story.blogger.name}"><b>TEXT</b></p>
-                            Beküldési idő: <p th:text="${#dates.format(story.posted, 'yyyy.MM.dd HH:mm')}"><b>TEXT</b></p>
-                        </address>
-                    </section>
-                </footer>
-                <hr/>
+                <p class="container">
+                    <i class="w3 fa fa-newspaper-o"></i>
+                    <label class="w3-text-teal"><b>Címe: </b></label>
+                    <input class="w3-input w3-border " type="text" id="title" name="title" th:value="${story.title}" />
+                </p>
+                <p class="container">
+                    <i class="w3 fa fa-building"></i>
+                    <label class="w3-text-teal"><b>Város:</b></label>
+                    <input class="w3-input w3-border " type="text" id="city" name="city" th:value="${story.city}" />
+                </p>
+                <p class="container">
+                    <i class="w3 fa fa-money"></i>
+                    <label class="w3-text-teal"><b>Ára:</b></label>
+                    <input class="w3-input w3-border " type="text" id="housevalue" name="housevalue" th:value="${story.housevalue}" />
+                </p>
+                <p class="container">
+                    <i class="w3 fa fa-external-link"></i>
+                    <label class="w3-text-teal"><b>Kép linkje:</b></label>
+                    <input class="w3-input w3-border " type="text" id="pictureUrl" name="pictureUrl" th:value="${story.pictureUrl}" />
+                </p>
+                <p class="container">
+                    <i class="w3 fa fa-external-link"></i>
+                    <label class="w3-text-teal"><b>Hirdetés linkje:</b></label>
+                    <input class="w3-input w3-border " type="text" id="linkToHouse" name="linkToHouse" th:value="${story.linkToHouse}" />
+                </p>
+                <p class="container">
+                    <i class="w3 fa fa-address-card"></i>
+                    <label class="w3-text-teal"><b>Eladó Neve:</b></label>
+                    <input class="w3-input w3-border " type="text" id="sellerName" name="sellerName" th:value="${story.sellerName}" />
+                </p>
+                <p class="container">
+                    <i class="w3 fa fa-mobile"></i>
+                    <label class="w3-text-teal"><b>Eladó telefonszáma:</b></label>
+                    <input class="w3-input w3-border " type="text" id="phoneNumber" name="phoneNumber" th:value="${story.phoneNumber}"/>
+                </p>
+                <p class="container">
+                    <i class="w3 fa fa-microphone"></i>
+                    <label class="w3-text-teal"><b>Felhivtad már?:</b>
+                        <input class="w3-check" type="checkbox" id="called" name="called" th:value="${story.called}" />
+                    </label>
+                </p>
+                <p class="container">
+                    <i class="w3 fa fa-pencil-square-o"></i>
+                    <label class="w3-text-teal"><b>Leírás:</b></label>
+                    <textarea class="w3-input w3-border" id="content" name="content" th:utext="${story.content}"></textarea>
+                </p>
+                <br/>
+                <p>
+                    <button type="submit" class="w3-btn w3-teal"><i class="w3 fa fa-check"/>  Frissítés</button>
+                    <button type="reset" class="w3-btn w3-teal" th:href="@{/}"><i class="w3 fa fa-close"/>  Vissza</button>
+                </p>
+                <br/>
             </form>
+
         </div>
         <br/>
-    </article>
 
+    </article>
     <br/>
     <footer>
         <p><i class="w3 fa faStories fa-copyright"></i> 2018 Készítette Kiss Zoltán <a href="mailto:kiss.zoltan.pti@gmail.com">kiss.zoltan.pti@gmail.com</a>.</p>
